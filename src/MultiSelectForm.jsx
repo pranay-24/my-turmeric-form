@@ -31,11 +31,9 @@ const MultiSelectForm = () => {
   const sendDimensions = () => {
     const width = document.body.scrollWidth;
    // const height = document.body.scrollHeight;
-   // const formHeight = document.documentElement.scrollHeight;
-    const form = document.querySelector('form');
-    const formHeight = form ? form.offsetHeight : 0;
+    const formHeight = document.documentElement.scrollHeight;
 
-    const height1 = formHeight + 100;
+    const height1 = formHeight + 50;
 
     window.parent.postMessage({ 
         type: 'resize', 
@@ -54,28 +52,15 @@ const MultiSelectForm = () => {
      // Send on resize
      window.addEventListener('resize', sendDimensions);
 
-      const observer = new MutationObserver(sendDimensions);
-
      // Send on dynamic content changes (like dropdowns opening)
-    // const resizeObserver = new ResizeObserver(() => {
-    //     sendDimensions();
-    // });
+    const resizeObserver = new ResizeObserver(() => {
+        sendDimensions();
+    });
 
 
     // Observe the form container
-    // if (document.body) {
-    //     resizeObserver.observe(document.body);
-    // }
-
-      
-    // Start observing the form for any changes
-    const form2 = document.querySelector('form');
-    if (form2) {
-        observer.observe(form2, {
-            attributes: true,
-            childList: true,
-            subtree: true
-        });
+    if (document.body) {
+        resizeObserver.observe(document.body);
     }
 
     // Also send dimensions when form fields change
@@ -102,11 +87,12 @@ const MultiSelectForm = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('resize', sendDimensions);
-    
+      if (document.body) {
+        resizeObserver.disconnect();
+    }
     if (form) {
         form.removeEventListener('change', sendDimensions);
     }
-    observer.disconnect();
 
     };
 
