@@ -19,8 +19,10 @@ export default async function handler(req, res) {
           },
           body: JSON.stringify(req.body),
         });
-  
-        if (!response.ok) throw new Error('Zapier webhook failed');
+        const responseText = await response.text();
+        console.log('Zapier response:', response.status, responseText);
+
+        if (!response.ok) throw new Error(`Zapier webhook failed: ${response.status} ${responseText}`);
   
         return res.status(200).json({ message: 'Success' });
       } catch (error) {

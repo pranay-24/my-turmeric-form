@@ -294,10 +294,20 @@ const validateForm = () => {
             }),
           });
          
+           // Log the full response for debugging
+  const responseText = await response.text();
+  console.log('Server response:', response.status, responseText);
+
           if (!response.ok) {
-            const errorData = await response.json().catch(() => null);
-            throw new Error(errorData?.message || 'Submission failed');
-          }
+    let errorMessage;
+    try {
+      const errorData = JSON.parse(responseText);
+      errorMessage = errorData.error || 'Submission failed';
+    } catch (e) {
+      errorMessage = responseText || 'Submission failed';
+    }
+    throw new Error(errorMessage);
+  }
 
       
         setSubmitStatus('success');
