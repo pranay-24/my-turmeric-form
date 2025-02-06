@@ -29,14 +29,19 @@ const MultiSelectForm = () => {
   const revenueRef = useRef(null);
 
   useEffect(() => {
-    const sendHeight = () => {
+    const sendDimensions = () => {
+        const width = document.body.scrollWidth;
         const height = document.body.scrollHeight;
-        window.parent.postMessage({ type: 'resize', height }, '*');
-      };
+        window.parent.postMessage({ 
+            type: 'resize', 
+            height,
+            width
+        }, '*');
+    };
 
-      sendHeight();
+    sendDimensions();
        // Send height when window resizes
-    window.addEventListener('resize', sendHeight);
+    window.addEventListener('resize',  sendDimensions);
 
 
     const handleClickOutside = (event) => {
@@ -54,7 +59,7 @@ const MultiSelectForm = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      window.removeEventListener('resize', sendHeight);
+      window.removeEventListener('resize', sendDimensions);
     };
 
     
@@ -332,7 +337,7 @@ const toggleSpecialty = (value) => {
   };
   
   return (
-    <div className=" mx-auto px-4 sm:px-6 md:px-8">
+    <div className="w-full max-w-full  mx-auto px-4 sm:px-6 md:px-8">
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Basic Information */}
       <div className="grid grid-cols-1 gap-5 md:grid-col-2">
