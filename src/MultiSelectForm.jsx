@@ -260,18 +260,28 @@ const validateForm = () => {
 
     setSubmitStatus('submitting');
 
-    try {
+    
       // You can replace this URL with your serverless function endpoint
       // or Google Sheets API endpoint
-      const response = await fetch('YOUR_SUBMISSION_ENDPOINT', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+    try {
+        const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ...formData,
+              submittedAt: new Date().toISOString(),
+              source: window.location.href
+            }),
+          });
+         
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            throw new Error(errorData?.message || 'Submission failed');
+          }
 
-      if (response.ok) {
+      
         setSubmitStatus('success');
         // Reset form
         setFormData({
@@ -287,10 +297,9 @@ const validateForm = () => {
         annualRevenue: '',
         comments: ''
         });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
+    
+
+    }catch (error) {
       console.error('Submission error:', error);
       setSubmitStatus('error');
     }
