@@ -558,14 +558,15 @@ const toggleSpecialty = (value) => {
       <button
         type="submit"
         disabled={submitStatus === 'submitting'}
-        className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 disabled:bg-blue-300"
+        className="w-full hover-effect  py-2 px-4 "
+        
       >
-        {submitStatus === 'submitting' ? 'Submitting...' : 'Submit'}
+        {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Request'}
       </button>
 
       {/* Status Messages */}
       {submitStatus === 'success' && (
-        <div className="text-green-600">Form submitted successfully!</div>
+        <div className="text-black">Form submitted successfully!</div>
       )}
       {submitStatus === 'error' && (
         <div className="text-red-600">Error submitting form. Please try again.</div>

@@ -13,6 +13,17 @@ min-height:40px;
 .sup{
 color:red;
 }
+
+.hover-effect {
+    background-color:#f25939;
+    color: white;
+  }
+  
+  .hover-effect:hover {
+    background-color: black;
+    color: white;
+  }
+
 *, ::backdrop, :after, :before {
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
@@ -752,7 +763,9 @@ color:red;
     border-top-right-radius: 1rem !important;
     border-bottom-right-radius: 1rem !important;
   }
-  
+  .tw-black{
+    background-color: #000;
+  }
   .tw-border-blackr {
     border: 1px solid black;
     border-radius: 15px;
