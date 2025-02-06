@@ -31,17 +31,41 @@ const MultiSelectForm = () => {
   useEffect(() => {
     const sendDimensions = () => {
         const width = document.body.scrollWidth;
-        const height = document.body.scrollHeight;
+       // const height = document.body.scrollHeight;
+        const formHeight = document.documentElement.scrollHeight;
+
+        const height1 = formHeight + 50;
+
         window.parent.postMessage({ 
             type: 'resize', 
-            height,
+            height1,
             width
         }, '*');
     };
 
     sendDimensions();
        // Send height when window resizes
-    window.addEventListener('resize',  sendDimensions);
+    //window.addEventListener('resize',  sendDimensions);
+
+     // Send on resize
+     window.addEventListener('resize', sendDimensions);
+
+     // Send on dynamic content changes (like dropdowns opening)
+    const resizeObserver = new ResizeObserver(() => {
+        sendDimensions();
+    });
+
+
+    // Observe the form container
+    if (document.body) {
+        resizeObserver.observe(document.body);
+    }
+
+    // Also send dimensions when form fields change
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('change', sendDimensions);
+    }
 
 
     const handleClickOutside = (event) => {
@@ -57,9 +81,17 @@ const MultiSelectForm = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('resize', sendDimensions);
+      if (document.body) {
+        resizeObserver.disconnect();
+    }
+    if (form) {
+        form.removeEventListener('change', sendDimensions);
+    }
+    
     };
 
     
