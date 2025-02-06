@@ -29,6 +29,16 @@ const MultiSelectForm = () => {
   const revenueRef = useRef(null);
 
   useEffect(() => {
+    const sendHeight = () => {
+        const height = document.body.scrollHeight;
+        window.parent.postMessage({ type: 'resize', height }, '*');
+      };
+
+      sendHeight();
+       // Send height when window resizes
+    window.addEventListener('resize', sendHeight);
+
+
     const handleClickOutside = (event) => {
       if (statesRef.current && !statesRef.current.contains(event.target)) {
         setStatesOpen(false);
@@ -44,7 +54,10 @@ const MultiSelectForm = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('resize', sendHeight);
     };
+
+    
   }, []);
 
   // Your existing state and specialty options
