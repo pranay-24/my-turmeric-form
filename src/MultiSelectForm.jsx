@@ -28,22 +28,20 @@ const MultiSelectForm = () => {
   const specialtiesRef = useRef(null);
   const revenueRef = useRef(null);
 
-  const sendDimensions = () => {
-    const width = document.body.scrollWidth;
-   // const height = document.body.scrollHeight;
-    const formHeight = document.documentElement.scrollHeight;
-
-    const height1 = formHeight + 50;
-
-    window.parent.postMessage({ 
-        type: 'resize', 
-        height1,
-        width
-    }, '*');
-};
-
   useEffect(() => {
- 
+    const sendDimensions = () => {
+        const width = document.body.scrollWidth;
+       // const height = document.body.scrollHeight;
+        const formHeight = document.documentElement.scrollHeight;
+
+        const height1 = formHeight + 50;
+
+        window.parent.postMessage({ 
+            type: 'resize', 
+            height1,
+            width
+        }, '*');
+    };
 
     sendDimensions();
        // Send height when window resizes
@@ -93,24 +91,11 @@ const MultiSelectForm = () => {
     if (form) {
         form.removeEventListener('change', sendDimensions);
     }
-
+    
     };
 
     
   }, []);
-
-  // Second useEffect for handling checkSize messages
-useEffect(() => {
-    const handleMessage = (event) => {
-        if (event.data.type === 'checkSize') {
-            sendDimensions(); // Note: You'll need to make sendDimensions accessible here
-        }
-    };
-    
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-}, []);
-
 
   // Your existing state and specialty options
   const states = [
