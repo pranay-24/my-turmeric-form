@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
     // Enable CORS
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', 'https://your-webflow-domain.com');
+    res.setHeader('Access-Control-Allow-Origin', process.env.WEBFLOW_DOMAIN);
     res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
