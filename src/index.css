@@ -1,13 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import custom fonts */
+@font-face {
+  font-family: 'Butler';
+  src: url('./fonts/butler-black.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Butler';
+  src: url('./fonts/butler-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/poppins-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Set default font to Poppins */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+/* Utility classes for using Butler */
+.butler-400 {
+  font-family: 'Butler', sans-serif;
+  font-weight: 400;
+}
+
+.butler-700 {
+  font-family: 'Butler', sans-serif;
+  font-weight: 700;
+}
+
+.poppins-400 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
