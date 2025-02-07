@@ -482,7 +482,7 @@ const toggleSpecialty = (value) => {
             />
             <label htmlFor="selectAllServices" className="font-medium">Select All Services</label>
           </div>
-         {/* Individual Services */}
+          {/* Individual Services */}
 {services.map((service) => (
   <div key={service} className="flex items-start ml-2">
     <div className="flex-shrink-0 mt-1">
@@ -507,6 +507,7 @@ const toggleSpecialty = (value) => {
 {formErrors.services && (
   <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
 )}
+        </div>
       
         {/* Specialties Dropdown */}
         <div className="relative" ref={specialtiesRef}>
