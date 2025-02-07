@@ -435,7 +435,7 @@ const toggleSpecialty = (value) => {
             onClick={() => setStatesOpen(!statesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
           >
-            <span>{formData.states.length ? `${formData.states.length} states selected` : 'Select States'}</span>
+            <span>{formData.states.length ? `${formData.states.length} states selected` : 'Select Multiple States'}</span>
             <ChevronDown className={`transform transition-transform ${statesOpen ? 'rotate-180' : ''}`} />
           </button>
           {statesOpen && (
@@ -516,7 +516,7 @@ const toggleSpecialty = (value) => {
             onClick={() => setSpecialtiesOpen(!specialtiesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
           >
-            <span>{formData.specialties.length ? `${formData.specialties.length} specialties selected` : 'Select Specialties'}</span>
+            <span>{formData.specialties.length ? `${formData.specialties.length} specialties selected` : 'Select Multiple Specialties'}</span>
             <ChevronDown className={`transform transition-transform ${specialtiesOpen ? 'rotate-180' : ''}`} />
           </button>
           {specialtiesOpen && (
