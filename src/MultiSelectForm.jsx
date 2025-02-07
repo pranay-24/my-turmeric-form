@@ -482,29 +482,31 @@ const toggleSpecialty = (value) => {
             />
             <label htmlFor="selectAllServices" className="font-medium">Select All Services</label>
           </div>
-          {/* Individual Services */}
-          {services.map((service) => (
-            <div key={service} className="flex items-center ml-2">
-              <input
-                type="checkbox"
-                id={service}
-                checked={formData.services.includes(service)}
-                onChange={(e) => {
-                  const newServices = e.target.checked
-                    ? [...formData.services, service]
-                    : formData.services.filter(s => s !== service);
-                  setFormData({...formData, services: newServices});
-                }}
-                className="mr-3"
-                style={{width:"19px" ,height:"19px" }}
-              />
-              <label htmlFor={service}>{service}</label>
-            </div>
-          ))}
-          {formErrors.services && (
-            <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
-          )}
-        </div>
+         {/* Individual Services */}
+{services.map((service) => (
+  <div key={service} className="flex items-start ml-2">
+    <div className="flex-shrink-0 mt-1">
+      <input
+        type="checkbox"
+        id={service}
+        checked={formData.services.includes(service)}
+        onChange={(e) => {
+          const newServices = e.target.checked
+            ? [...formData.services, service]
+            : formData.services.filter(s => s !== service);
+          setFormData({...formData, services: newServices});
+        }}
+        className="w-5 h-5 mr-3"
+      />
+    </div>
+    <label htmlFor={service} className="leading-normal">
+      {service}
+    </label>
+  </div>
+))}
+{formErrors.services && (
+  <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
+)}
       
         {/* Specialties Dropdown */}
         <div className="relative" ref={specialtiesRef}>
