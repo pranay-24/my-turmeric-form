@@ -7,6 +7,40 @@ color:#333;
 font-size:18px;
 }
 
+.cta_button {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.cta_button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+
+.cta_button:hover::after {
+  animation: shine 1s ease-in-out;
+}
+
+@keyframes shine {
+  100% {
+    left: 200%;
+  }
+}
+
 .fade-text{
   color:#747474;
 }
