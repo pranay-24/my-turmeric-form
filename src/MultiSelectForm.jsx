@@ -350,7 +350,7 @@ const toggleSpecialty = (value) => {
   };
   
   return (
-    <div className="w-full max-w-full  mx-auto px-4 sm:px-6 md:px-8">
+    <div className="w-full max-w-full tw-mb-10  mx-auto px-4 sm:px-6 md:px-8">
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Basic Information */}
       <div className="grid grid-cols-1 gap-5 md:grid-col-2">
