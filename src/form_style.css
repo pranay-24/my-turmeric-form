@@ -7,13 +7,18 @@ color:#333;
 font-size:18px;
 }
 
-.cta_button {
+.shine-button {
   position: relative;
   overflow: hidden;
+  background-color: #007bff; /* Or your desired button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-
-.cta_button::after {
+.shine-button::after {
   content: "";
   position: absolute;
   top: 0;
@@ -30,15 +35,24 @@ font-size:18px;
   transition: none;
 }
 
-
-.cta_button:hover::after {
-  animation: shine 1s ease-in-out;
+.shine-button:hover::after {
+  animation: shine-effect 1s ease-in-out;
 }
 
-@keyframes shine {
+@keyframes shine-effect {
   100% {
     left: 200%;
   }
+}
+
+/* Disabled state */
+.shine-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.shine-button:disabled::after {
+  animation: none;
 }
 
 .fade-text{
