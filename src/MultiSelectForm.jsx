@@ -52,7 +52,12 @@ const MultiSelectForm = () => {
       }
       if (specialtiesRef.current && !specialtiesRef.current.contains(event.target)) {
         setSpecialtiesOpen(false);
+
       }
+      if (servicesRef.current && !servicesRef.current.contains(event.target)) {
+        setServicesOpen(false);
+      }
+      
       if (revenueRef.current && !revenueRef.current.contains(event.target)) {
         setRevenueOpen(false);
       }
