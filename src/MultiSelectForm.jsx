@@ -513,6 +513,7 @@ const toggleSpecialty = (value) => {
 )}
         </div>
       
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Specialties Dropdown */}
         <div className="relative" ref={specialtiesRef}>
           <label className="block label_input">
@@ -587,9 +588,12 @@ const toggleSpecialty = (value) => {
     <span className="text-red-500 text-sm mt-1">{formErrors.annualRevenue}</span>
   )}
 </div>
+</div>
+
+
       {/* Comments */}
       <div className="flex flex-col">
-        <label htmlFor="comments" className="label_input">Comments</label>
+        <label htmlFor="comments" className="label_input">Let us know how we can help</label>
         <textarea
           id="comments"
           value={formData.comments}
