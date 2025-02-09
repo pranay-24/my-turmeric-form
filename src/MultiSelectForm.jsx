@@ -57,7 +57,7 @@ const MultiSelectForm = () => {
       if (servicesRef.current && !servicesRef.current.contains(event.target)) {
         setServicesOpen(false);
       }
-      
+
       if (revenueRef.current && !revenueRef.current.contains(event.target)) {
         setRevenueOpen(false);
       }
@@ -465,7 +465,7 @@ const toggleSpecialty = (value) => {
             onClick={() => setStatesOpen(!statesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
           >
-            <span>{formData.states.length ? `${formData.states.length} states selected` : 'Select Multiple States'}</span>
+            <span class="fade-text">{formData.states.length ? `${formData.states.length} states selected` : 'Select Multiple States'}</span>
             <ChevronDown className={`transform transition-transform ${statesOpen ? 'rotate-180' : ''}`} />
           </button>
           {statesOpen && (
@@ -501,7 +501,7 @@ const toggleSpecialty = (value) => {
     onClick={() => setServicesOpen(!servicesOpen)}
     className="w-full p-2 border min40 flex justify-between items-center bg-white"
   >
-    <span>{formData.services.length ? `${formData.services.length} services selected` : 'Select Multiple Services'}</span>
+    <span class="fade-text">{formData.services.length ? `${formData.services.length} services selected` : 'Select Multiple Services'}</span>
     <ChevronDown className={`transform transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
   </button>
   {servicesOpen && (
@@ -540,7 +540,7 @@ const toggleSpecialty = (value) => {
             onClick={() => setSpecialtiesOpen(!specialtiesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
           >
-            <span>{formData.specialties.length ? `${formData.specialties.length} specialties selected` : 'Select Multiple Specialties'}</span>
+            <span class="fade-text">{formData.specialties.length ? `${formData.specialties.length} specialties selected` : 'Select Multiple Specialties'}</span>
             <ChevronDown className={`transform transition-transform ${specialtiesOpen ? 'rotate-180' : ''}`} />
           </button>
           {specialtiesOpen && (
