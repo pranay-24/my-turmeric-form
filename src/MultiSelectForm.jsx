@@ -429,7 +429,7 @@ const toggleSpecialty = (value) => {
       </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* States Dropdown */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2"></div>
+        
         <div className="relative" ref={statesRef}>
           <label className="block label_input">
             State<span className="text-red-500">*</span>
