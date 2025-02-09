@@ -849,5 +849,10 @@ color:red;
     border-style: none !important;
   }
   
-
+  @media (min-width: 768px) {
+    /* Note the escaped colon in the class name */
+    .md\:grid-col-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   
