@@ -483,7 +483,7 @@ const toggleSpecialty = (value) => {
             <span className="text-red-500 text-sm mt-1">{formErrors.states}</span>
           )}
         </div>
-</div>
+
        
 
       
@@ -522,7 +522,7 @@ const toggleSpecialty = (value) => {
     <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
   )}
 </div>
-
+</div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Specialties Dropdown */}
