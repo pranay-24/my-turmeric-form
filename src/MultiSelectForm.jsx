@@ -18,6 +18,7 @@ const MultiSelectForm = () => {
   
   const [statesOpen, setStatesOpen] = useState(false);
   const [specialtiesOpen, setSpecialtiesOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
   const [formErrors, setFormErrors] = useState({});
   const [revenueOpen, setRevenueOpen] = useState(false);
@@ -26,6 +27,7 @@ const MultiSelectForm = () => {
   // Refs for click-outside handling
   const statesRef = useRef(null);
   const specialtiesRef = useRef(null);
+  const servicesRef = useRef(null);
   const revenueRef = useRef(null);
 
   useEffect(() => {
@@ -173,19 +175,19 @@ const MultiSelectForm = () => {
         { value: '> 20M', label: '> $20,000,000' }
       ];
 
-  const services = [
-    
-    'Insurance Eligibility and Benefits Verification',
-    'Prior Authorization',
-    'Patient Demographic Entry',
-    'Medical Coding',
-    'Clinical Documentation Improvement (CDI)',
-    'Coding Audits',
-    'Claim Submission',
-    'Payment Posting',
-    'Credit Balance Management',
-    'Denial Management'
-  ];
+      const services = [
+        { value: 'all', label: 'Select All' }, 
+        { value: 'eligibility', label: 'Insurance Eligibility and Benefits Verification' },
+        { value: 'prior_auth', label: 'Prior Authorization' },
+        { value: 'demographics', label: 'Patient Demographic Entry' },
+        { value: 'coding', label: 'Medical Coding' },
+        { value: 'cdi', label: 'Clinical Documentation Improvement (CDI)' },
+        { value: 'audits', label: 'Coding Audits' },
+        { value: 'claims', label: 'Claim Submission' },
+        { value: 'posting', label: 'Payment Posting' },
+        { value: 'balance', label: 'Credit Balance Management' },
+        { value: 'denials', label: 'Denial Management' }
+      ];
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -348,9 +350,28 @@ const toggleSpecialty = (value) => {
       : [...formData.specialties, value];
     setFormData({...formData, specialties: newSpecialties});
   };
+
+  const toggleService = (value) => {
+    let newServices;
+    if (value === 'all') {
+      // If Select All is clicked
+      if (formData.services.length === services.length - 1) { // -1 because we don't count the "Select All" option
+        newServices = []; // Deselect all if everything was selected
+      } else {
+        newServices = services.filter(s => s.value !== 'all').map(s => s.value); // Select all except "Select All" option
+      }
+    } else {
+      // Regular toggle for individual services
+      newServices = formData.services.includes(value)
+        ? formData.services.filter(service => service !== value)
+        : [...formData.services, value];
+    }
+    setFormData({...formData, services: newServices});
+  };
+
   
   return (
-    <div className="w-full max-w-full tw-mb-10  mx-auto px-4 sm:px-6 md:px-8">
+    <div className="w-full max-w-full  mx-auto px-4 sm:px-6 md:px-8">
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Basic Information */}
       <div className="grid grid-cols-1 gap-5 md:grid-col-2">
@@ -464,55 +485,45 @@ const toggleSpecialty = (value) => {
         </div>
 </div>
        
-        {/* Services Section */}
-        <div className="space-y-2" id="services">
-          <label className="block label_input">
-            Services interested in<span className="text-red-500">*</span>
-          </label>
-          {/* Select All Checkbox */}
-          <div className="flex items-center  ml-2 mb-2">
-            <input
-              type="checkbox"
-              id="selectAllServices"
-              checked={formData.services.length === services.length}
-              onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  services: e.target.checked ? [...services] : []
-                });
-              }}
-              className="mr-3"
-              style={{width:"19px" ,height:"19px" }}
-            />
-            <label htmlFor="selectAllServices" className="font-medium">Select All Services</label>
-          </div>
-          {/* Individual Services */}
-{services.map((service) => (
-  <div key={service} className="flex items-start ml-2">
-    <div className="flex-shrink-0 mt-1">
-      <input
-        type="checkbox"
-        id={service}
-        checked={formData.services.includes(service)}
-        onChange={(e) => {
-          const newServices = e.target.checked
-            ? [...formData.services, service]
-            : formData.services.filter(s => s !== service);
-          setFormData({...formData, services: newServices});
-        }}
-        className="w-5 h-5 mr-3"
-      />
-    </div>
-    <label htmlFor={service} className="leading-normal">
-      {service}
-    </label>
-  </div>
-))}
-{formErrors.services && (
-  <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
-)}
-        </div>
+
       
+<div className="relative" ref={servicesRef}>
+  <label className="block label_input">
+    Services interested in<span className="text-red-500">*</span>
+  </label>
+  <button
+    type="button"
+    onClick={() => setServicesOpen(!servicesOpen)}
+    className="w-full p-2 border min40 flex justify-between items-center bg-white"
+  >
+    <span>{formData.services.length ? `${formData.services.length} services selected` : 'Select Multiple Services'}</span>
+    <ChevronDown className={`transform transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+  </button>
+  {servicesOpen && (
+    <div className="absolute z-10 w-full mt-1 bg-white border shadow-lg max-h-60 overflow-auto">
+      {services.map((service) => (
+        <div
+          key={service.value}
+          className="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
+          onClick={() => toggleService(service.value)}
+        >
+          <div className="w-4 h-4 border rounded mr-2 flex items-center justify-center">
+            {service.value === 'all' 
+              ? formData.services.length === services.length - 1 && <Check size={14} />
+              : formData.services.includes(service.value) && <Check size={14} />
+            }
+          </div>
+          {service.label}
+        </div>
+      ))}
+    </div>
+  )}
+  {formErrors.services && (
+    <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
+  )}
+</div>
+
+
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Specialties Dropdown */}
         <div className="relative" ref={specialtiesRef}>
@@ -592,7 +603,7 @@ const toggleSpecialty = (value) => {
 
 
       {/* Comments */}
-      <div className="flex flex-col">
+      <div className="flex flex-col tw-mb-5">
         <label htmlFor="comments" className="label_input">Let us know how we can help</label>
         <textarea
           id="comments"
