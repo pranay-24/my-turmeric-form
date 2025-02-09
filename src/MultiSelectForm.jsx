@@ -405,7 +405,7 @@ const toggleSpecialty = (value) => {
       </div>
 
       {/* Company Information */}
-      <div className="grid grid-cols-1 gap-5 md:grd-col-2">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div className="flex flex-col">
           <label htmlFor="companyName" className="label_input">Company Name<span class="sup">*</span></label>
           <input
