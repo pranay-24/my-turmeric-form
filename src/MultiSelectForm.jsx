@@ -577,7 +577,7 @@ const toggleSpecialty = (value) => {
     onClick={() => setRevenueOpen(!revenueOpen)}
     className="w-full p-2 border min40 flex justify-between items-center bg-white"
   >
-    <span>
+    <span class="fade-text">
       {formData.annualRevenue 
         ? revenueOptions.find(opt => opt.value === formData.annualRevenue)?.label 
         : 'Select Annual Revenue'}
