@@ -427,8 +427,9 @@ const toggleSpecialty = (value) => {
           />
         </div>
       </div>
-
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* States Dropdown */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2"></div>
         <div className="relative" ref={statesRef}>
           <label className="block label_input">
             State<span className="text-red-500">*</span>
@@ -461,8 +462,8 @@ const toggleSpecialty = (value) => {
             <span className="text-red-500 text-sm mt-1">{formErrors.states}</span>
           )}
         </div>
-
-     
+</div>
+       
         {/* Services Section */}
         <div className="space-y-2" id="services">
           <label className="block label_input">
@@ -515,7 +516,7 @@ const toggleSpecialty = (value) => {
         {/* Specialties Dropdown */}
         <div className="relative" ref={specialtiesRef}>
           <label className="block label_input">
-            Specialties<span className="text-red-500">*</span>
+            Specialty Type<span className="text-red-500">*</span>
           </label>
           <button
             type="button"
