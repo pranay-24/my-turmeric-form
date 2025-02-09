@@ -164,10 +164,13 @@ const MultiSelectForm = () => {
     
   
     const revenueOptions = [
-        { value: '0-1M', label: '$0 - $1M' },
-        { value: '1M-5M', label: '$1M - $5M' },
-        { value: '5M-10M', label: '$5M - $10M' },
-        { value: '10M+', label: '$10M+' }
+        { value: '<200000', label: '< $200,000' },
+        { value: '200000 - 500000', label: '$200,000 - $500,000' },
+        { value: '500000-1M', label: '$500,000 - $1,000,000' },
+        { value: '1M-5M', label: '$1,000,000 - $5,000,000' },
+        { value: '5M-10M', label: '$5,000,000 - $10,000,000' },
+        { value: '10M-20M', label: '$10,000,000 - $20,000,000' },
+        { value: '> 20M', label: '> $20,000,000' }
       ];
 
   const services = [
