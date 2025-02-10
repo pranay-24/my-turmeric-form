@@ -630,7 +630,7 @@ const toggleSpecialty = (value) => {
       </button>
       </div>
 
-      <div class="tw-w-full tw-flex tw-flex-row tw-justify-center">
+      <div class="tw-w-full tw-flex tw-flex-row tw-justify-center p-2">
       {/* Status Messages */}
       {submitStatus === 'success' && (
         <div className="text-black">Form submitted successfully!</div>
