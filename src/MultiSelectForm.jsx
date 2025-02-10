@@ -619,7 +619,7 @@ const toggleSpecialty = (value) => {
       </div>
 
       {/* Submit Button */}
-      <div class="tw-w-full">
+      <div class="tw-w-full tw-flex tw-flex-row tw-justify-center">
       <button
         type="submit"
         disabled={submitStatus === 'submitting'}
