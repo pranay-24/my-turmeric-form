@@ -619,6 +619,7 @@ const toggleSpecialty = (value) => {
       </div>
 
       {/* Submit Button */}
+      <div class="tw-w-full">
       <button
         type="submit"
         disabled={submitStatus === 'submitting'}
@@ -627,6 +628,7 @@ const toggleSpecialty = (value) => {
       >
         {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Request'}
       </button>
+      </div>
 
       {/* Status Messages */}
       {submitStatus === 'success' && (
