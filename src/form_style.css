@@ -455,6 +455,9 @@ color:red;
   .tw-w-full {
     width: 100% !important;
   }
+  .tw-w-330 {
+    max-width: 330px !important;
+  }
   
   .tw-min-w-24 {
     min-width: 9.6rem !important;

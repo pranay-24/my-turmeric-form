@@ -622,7 +622,7 @@ const toggleSpecialty = (value) => {
       <button
         type="submit"
         disabled={submitStatus === 'submitting'}
-        className="w-full shine-button  py-3 px-4 "
+        className="tw-w-330 shine-button  py-3 px-4 "
         
       >
         {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Request'}
