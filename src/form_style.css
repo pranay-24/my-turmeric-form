@@ -65,6 +65,10 @@ min-height:40px;
 color:red;
 }
 
+.my-element {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 .hover-effect {
     background-color:#f25939;
     color: white;
@@ -791,7 +795,10 @@ color:red;
   .tw-text-pretty {
     text-wrap: pretty !important;
   }
-  
+  .tw-rounded-1 {
+    border-radius: 0.2rem !important;
+  }
+
   .tw-rounded-xl {
     border-radius: 0.5rem !important;
   }
