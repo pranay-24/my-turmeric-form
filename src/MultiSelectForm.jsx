@@ -166,7 +166,8 @@ const MultiSelectForm = () => {
         { value: 'radiology', label: 'Radiology' },
         { value: 'rheumatology', label: 'Rheumatology' },
         { value: 'urology', label: 'Urology' },
-        { value: 'wound_care', label: 'Wound Care' }
+        { value: 'wound_care', label: 'Wound Care' },
+        { value: 'other', label: 'Other' }
     ];
     
   
