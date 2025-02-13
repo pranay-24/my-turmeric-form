@@ -128,9 +128,9 @@ const MultiSelectForm = () => {
 
   
     const specialties = [
-        { value: 'front_end', label: 'Frontend' },
-        { value: 'mid_end', label: 'Midend' },
-        { value: 'back_end', label: 'Backend' },
+        { value: 'front_end', label: 'Front-End Billing' },
+        { value: 'mid_end', label: 'Mid-End Billing' },
+        { value: 'back_end', label: 'Back-End Billing' },
         
         { value: 'allergy', label: 'Allergy' },
         { value: 'anesthesiology', label: 'Anesthesiology' },
