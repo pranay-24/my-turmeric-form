@@ -495,7 +495,7 @@ const toggleSpecialty = (value) => {
        
 
       
-<div className="relative" ref={servicesRef}>
+<div className="relative" >
   <label className="block label_input">
     Services interested in<span className="text-red-500">*</span>
   </label>
@@ -503,6 +503,7 @@ const toggleSpecialty = (value) => {
     type="button"
     onClick={() => setServicesOpen(!servicesOpen)}
     className="w-full p-2 border min40 flex justify-between items-center bg-white"
+    ref={servicesRef}
   >
     <span class="fade-text">{formData.services.length ? `${formData.services.length} services selected` : 'Select Multiple Services'}</span>
     <ChevronDown className={`transform transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
