@@ -458,7 +458,7 @@ const toggleSpecialty = (value) => {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* States Dropdown */}
         
-        <div className="relative" ref={statesRef}>
+        <div className="relative" >
           <label className="block label_input">
             State<span className="text-red-500">*</span>
           </label>
@@ -466,6 +466,7 @@ const toggleSpecialty = (value) => {
             type="button"
             onClick={() => setStatesOpen(!statesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
+            ref={statesRef}
           >
             <span class="fade-text">{formData.states.length ? `${formData.states.length} states selected` : 'Select Multiple States'}</span>
             <ChevronDown className={`transform transition-transform ${statesOpen ? 'rotate-180' : ''}`} />
