@@ -513,11 +513,12 @@ const toggleSpecialty = (value) => {
   <label className="block label_input">
     Services interested in<span className="text-red-500">*</span>
   </label>
+  <div  ref={servicesRef}>
   <button
     type="button"
     onClick={() => setServicesOpen(!servicesOpen)}
     className="w-full p-2 border min40 flex justify-between items-center bg-white"
-    ref={servicesRef}
+   
   >
     <span class="fade-text">{formData.services.length ? `${formData.services.length} services selected` : 'Select Multiple Services'}</span>
     <ChevronDown className={`transform transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
@@ -541,6 +542,7 @@ const toggleSpecialty = (value) => {
       ))}
     </div>
   )}
+  </div>
   {formErrors.services && (
     <span className="text-red-500 text-sm mt-1">{formErrors.services}</span>
   )}
@@ -553,11 +555,12 @@ const toggleSpecialty = (value) => {
           <label className="block label_input">
             Specialty Type<span className="text-red-500">*</span>
           </label>
+          <div  ref={specialtiesRef}>
           <button
             type="button"
             onClick={() => setSpecialtiesOpen(!specialtiesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
-            ref={specialtiesRef}
+            
           >
             <span class="fade-text">{formData.specialties.length ? `${formData.specialties.length} specialties selected` : 'Select Multiple Specialties'}</span>
             <ChevronDown className={`transform transition-transform ${specialtiesOpen ? 'rotate-180' : ''}`} />
@@ -578,6 +581,7 @@ const toggleSpecialty = (value) => {
               ))}
             </div>
           )}
+          </div>
           {formErrors.specialties && (
             <span className="text-red-500 text-sm mt-1">{formErrors.specialties}</span>
           )}
@@ -590,12 +594,13 @@ const toggleSpecialty = (value) => {
   <label className="block label_input">
     Annual Revenue<span className="text-red-500">*</span>
   </label>
+  <div   ref={revenueRef}>
   <button
     type="button"
     id="annualRevenue"
     onClick={() => setRevenueOpen(!revenueOpen)}
     className="w-full p-2 border min40 flex justify-between items-center bg-white"
-    ref={revenueRef}
+   
   >
     <span class="fade-text">
       {formData.annualRevenue 
@@ -620,6 +625,7 @@ const toggleSpecialty = (value) => {
       ))}
     </div>
   )}
+  </div>
   {formErrors.annualRevenue && (
     <span className="text-red-500 text-sm mt-1">{formErrors.annualRevenue}</span>
   )}
