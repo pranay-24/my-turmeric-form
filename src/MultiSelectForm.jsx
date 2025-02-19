@@ -471,11 +471,12 @@ const toggleSpecialty = (value) => {
           <label className="block label_input">
             State<span className="text-red-500">*</span>
           </label>
+          <div  ref={statesRef}>
           <button
             type="button"
             onClick={() => setStatesOpen(!statesOpen)}
             className="w-full p-2 border  min40 flex justify-between items-center bg-white"
-            ref={statesRef}
+           
           >
             <span class="fade-text">{formData.states.length ? `${formData.states.length} states selected` : 'Select Multiple States'}</span>
             <ChevronDown className={`transform transition-transform ${statesOpen ? 'rotate-180' : ''}`} />
@@ -499,6 +500,7 @@ const toggleSpecialty = (value) => {
               ))}
             </div>
           )}
+          </div>
           {formErrors.states && (
             <span className="text-red-500 text-sm mt-1">{formErrors.states}</span>
           )}
