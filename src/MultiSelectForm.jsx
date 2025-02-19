@@ -52,15 +52,13 @@ const MultiSelectForm = () => {
         setStatesOpen(false);
       }
         */
-       // For States dropdown
-  if (statesRef.current) {
-    const dropdownContent = statesRef.current.querySelector('.absolute');
-    if (!statesRef.current.contains(event.target) && 
-        (!dropdownContent || !dropdownContent.contains(event.target))) {
-      setStatesOpen(false);
-    }
+      
+
+  if (statesRef.current && !statesRef.current.contains(event.target)) {
+    setStatesOpen(false);
+
   }
-  
+
       if (specialtiesRef.current && !specialtiesRef.current.contains(event.target)) {
         setSpecialtiesOpen(false);
 
@@ -488,7 +486,10 @@ const toggleSpecialty = (value) => {
                 <div
                   key={state.value}
                   className="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
-                  onClick={() => toggleState(state.value)}
+                  onClick={(e) => {
+    e.stopPropagation();
+    toggleState(state.value);
+  }}
                 >
                   <div className="w-4 h-4 border rounded mr-2 flex items-center justify-center">
                     {formData.states.includes(state.value) && <Check size={14} />}
