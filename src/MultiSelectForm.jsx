@@ -47,9 +47,20 @@ const MultiSelectForm = () => {
 
 
     const handleClickOutside = (event) => {
+      /*
       if (statesRef.current && !statesRef.current.contains(event.target)) {
         setStatesOpen(false);
       }
+        */
+       // For States dropdown
+  if (statesRef.current) {
+    const dropdownContent = statesRef.current.querySelector('.absolute');
+    if (!statesRef.current.contains(event.target) && 
+        (!dropdownContent || !dropdownContent.contains(event.target))) {
+      setStatesOpen(false);
+    }
+  }
+  
       if (specialtiesRef.current && !specialtiesRef.current.contains(event.target)) {
         setSpecialtiesOpen(false);
 
