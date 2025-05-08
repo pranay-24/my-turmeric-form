@@ -298,7 +298,9 @@ const validateForm = () => {
 
     setSubmitStatus('submitting');
 
-    
+    if (window.fbq) {
+      window.fbq('track', 'Lead');
+    }
       // You can replace this URL with your serverless function endpoint
       // or Google Sheets API endpoint
     try {

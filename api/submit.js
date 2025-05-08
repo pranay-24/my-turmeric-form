@@ -18,7 +18,8 @@ module.exports = async function handler(req, res) {
       if (!process.env.ZAPIER_WEBHOOK_URL) {
         return res.status(500).json({ error: 'Zapier webhook URL is not configured' });
       }
-  
+     
+      
       try {
         const response = await fetch(process.env.ZAPIER_WEBHOOK_URL, {
           method: 'POST',
